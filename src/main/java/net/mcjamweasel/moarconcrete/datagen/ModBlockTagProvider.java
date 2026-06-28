@@ -2,9 +2,10 @@ package net.mcjamweasel.moarconcrete.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
-import net.mcjamweasel.moarconcrete.block.ModBlocks;
+import net.mcjamweasel.moarconcrete.ModBlockGroups;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
@@ -15,290 +16,40 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider wrapperLookup) {
 
-    //Pickaxe Mineable
-        valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.WHITE_CONCRETE_STAIRS)
-                .add(ModBlocks.WHITE_CONCRETE_SLAB)
-                .add(ModBlocks.WHITE_CONCRETE_WALL)
-                .add(ModBlocks.WHITE_CONCRETE_FENCE)
-                .add(ModBlocks.WHITE_CONCRETE_GATE)
-                .add(ModBlocks.WHITE_CONCRETE_PANEL)
-                .add(ModBlocks.WHITE_CONCRETE_BUTTON)
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_STAIRS)
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_SLAB)
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_WALL)
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_FENCE)
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_GATE)
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_BUTTON)
-                .add(ModBlocks.GRAY_CONCRETE_STAIRS)
-                .add(ModBlocks.GRAY_CONCRETE_SLAB)
-                .add(ModBlocks.GRAY_CONCRETE_WALL)
-                .add(ModBlocks.GRAY_CONCRETE_FENCE)
-                .add(ModBlocks.GRAY_CONCRETE_GATE)
-                .add(ModBlocks.GRAY_CONCRETE_BUTTON)
-                .add(ModBlocks.BLACK_CONCRETE_STAIRS)
-                .add(ModBlocks.BLACK_CONCRETE_SLAB)
-                .add(ModBlocks.BLACK_CONCRETE_WALL)
-                .add(ModBlocks.BLACK_CONCRETE_FENCE)
-                .add(ModBlocks.BLACK_CONCRETE_GATE)
-                .add(ModBlocks.BLACK_CONCRETE_BUTTON)
-                .add(ModBlocks.BROWN_CONCRETE_STAIRS)
-                .add(ModBlocks.BROWN_CONCRETE_SLAB)
-                .add(ModBlocks.BROWN_CONCRETE_WALL)
-                .add(ModBlocks.BROWN_CONCRETE_FENCE)
-                .add(ModBlocks.BROWN_CONCRETE_GATE)
-                .add(ModBlocks.BROWN_CONCRETE_BUTTON)
-                .add(ModBlocks.RED_CONCRETE_STAIRS)
-                .add(ModBlocks.RED_CONCRETE_SLAB)
-                .add(ModBlocks.RED_CONCRETE_WALL)
-                .add(ModBlocks.RED_CONCRETE_FENCE)
-                .add(ModBlocks.RED_CONCRETE_GATE)
-                .add(ModBlocks.RED_CONCRETE_BUTTON)
-                .add(ModBlocks.ORANGE_CONCRETE_STAIRS)
-                .add(ModBlocks.ORANGE_CONCRETE_SLAB)
-                .add(ModBlocks.ORANGE_CONCRETE_WALL)
-                .add(ModBlocks.ORANGE_CONCRETE_FENCE)
-                .add(ModBlocks.ORANGE_CONCRETE_GATE)
-                .add(ModBlocks.ORANGE_CONCRETE_BUTTON)
-                .add(ModBlocks.YELLOW_CONCRETE_STAIRS)
-                .add(ModBlocks.YELLOW_CONCRETE_SLAB)
-                .add(ModBlocks.YELLOW_CONCRETE_WALL)
-                .add(ModBlocks.YELLOW_CONCRETE_FENCE)
-                .add(ModBlocks.YELLOW_CONCRETE_GATE)
-                .add(ModBlocks.YELLOW_CONCRETE_BUTTON)
-                .add(ModBlocks.LIME_CONCRETE_STAIRS)
-                .add(ModBlocks.LIME_CONCRETE_SLAB)
-                .add(ModBlocks.LIME_CONCRETE_WALL)
-                .add(ModBlocks.LIME_CONCRETE_FENCE)
-                .add(ModBlocks.LIME_CONCRETE_GATE)
-                .add(ModBlocks.LIME_CONCRETE_BUTTON)
-                .add(ModBlocks.GREEN_CONCRETE_STAIRS)
-                .add(ModBlocks.GREEN_CONCRETE_SLAB)
-                .add(ModBlocks.GREEN_CONCRETE_WALL)
-                .add(ModBlocks.GREEN_CONCRETE_FENCE)
-                .add(ModBlocks.GREEN_CONCRETE_GATE)
-                .add(ModBlocks.GREEN_CONCRETE_BUTTON)
-                .add(ModBlocks.CYAN_CONCRETE_STAIRS)
-                .add(ModBlocks.CYAN_CONCRETE_SLAB)
-                .add(ModBlocks.CYAN_CONCRETE_WALL)
-                .add(ModBlocks.CYAN_CONCRETE_FENCE)
-                .add(ModBlocks.CYAN_CONCRETE_GATE)
-                .add(ModBlocks.CYAN_CONCRETE_BUTTON)
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_STAIRS)
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_SLAB)
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_WALL)
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_FENCE)
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_GATE)
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_BUTTON)
-                .add(ModBlocks.BLUE_CONCRETE_STAIRS)
-                .add(ModBlocks.BLUE_CONCRETE_SLAB)
-                .add(ModBlocks.BLUE_CONCRETE_WALL)
-                .add(ModBlocks.BLUE_CONCRETE_FENCE)
-                .add(ModBlocks.BLUE_CONCRETE_GATE)
-                .add(ModBlocks.BLUE_CONCRETE_BUTTON)
-                .add(ModBlocks.PURPLE_CONCRETE_STAIRS)
-                .add(ModBlocks.PURPLE_CONCRETE_SLAB)
-                .add(ModBlocks.PURPLE_CONCRETE_WALL)
-                .add(ModBlocks.PURPLE_CONCRETE_FENCE)
-                .add(ModBlocks.PURPLE_CONCRETE_GATE)
-                .add(ModBlocks.PURPLE_CONCRETE_BUTTON)
-                .add(ModBlocks.MAGENTA_CONCRETE_STAIRS)
-                .add(ModBlocks.MAGENTA_CONCRETE_SLAB)
-                .add(ModBlocks.MAGENTA_CONCRETE_WALL)
-                .add(ModBlocks.MAGENTA_CONCRETE_FENCE)
-                .add(ModBlocks.MAGENTA_CONCRETE_GATE)
-                .add(ModBlocks.MAGENTA_CONCRETE_BUTTON)
-                .add(ModBlocks.PINK_CONCRETE_STAIRS)
-                .add(ModBlocks.PINK_CONCRETE_SLAB)
-                .add(ModBlocks.PINK_CONCRETE_WALL)
-                .add(ModBlocks.PINK_CONCRETE_FENCE)
-                .add(ModBlocks.PINK_CONCRETE_GATE)
-                .add(ModBlocks.PINK_CONCRETE_BUTTON);
+    //For each block group in the array:
+        for (List<ModBlockGroups.MCBlock> group : ModBlockGroups.mcGroups) {
+            //For each Block in the group
+            for (ModBlockGroups.MCBlock block : group) {
+                //Add pickaxe & stone tool tags
+                valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE).add(block.customBlock());
+                valueLookupBuilder(BlockTags.NEEDS_STONE_TOOL).add(block.customBlock());
+            }
+        }
 
 
-    //Needs Stone Tool
-        valueLookupBuilder(BlockTags.NEEDS_STONE_TOOL)
-                .add(ModBlocks.WHITE_CONCRETE_STAIRS)
-                .add(ModBlocks.WHITE_CONCRETE_SLAB)
-                .add(ModBlocks.WHITE_CONCRETE_WALL)
-                .add(ModBlocks.WHITE_CONCRETE_FENCE)
-                .add(ModBlocks.WHITE_CONCRETE_GATE)
-                .add(ModBlocks.WHITE_CONCRETE_PANEL)
-                .add(ModBlocks.WHITE_CONCRETE_BUTTON)
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_STAIRS)
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_SLAB)
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_WALL)
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_FENCE)
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_GATE)
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_BUTTON)
-                .add(ModBlocks.GRAY_CONCRETE_STAIRS)
-                .add(ModBlocks.GRAY_CONCRETE_SLAB)
-                .add(ModBlocks.GRAY_CONCRETE_WALL)
-                .add(ModBlocks.GRAY_CONCRETE_FENCE)
-                .add(ModBlocks.GRAY_CONCRETE_GATE)
-                .add(ModBlocks.GRAY_CONCRETE_BUTTON)
-                .add(ModBlocks.BLACK_CONCRETE_STAIRS)
-                .add(ModBlocks.BLACK_CONCRETE_SLAB)
-                .add(ModBlocks.BLACK_CONCRETE_WALL)
-                .add(ModBlocks.BLACK_CONCRETE_FENCE)
-                .add(ModBlocks.BLACK_CONCRETE_GATE)
-                .add(ModBlocks.BLACK_CONCRETE_BUTTON)
-                .add(ModBlocks.BROWN_CONCRETE_STAIRS)
-                .add(ModBlocks.BROWN_CONCRETE_SLAB)
-                .add(ModBlocks.BROWN_CONCRETE_WALL)
-                .add(ModBlocks.BROWN_CONCRETE_FENCE)
-                .add(ModBlocks.BROWN_CONCRETE_GATE)
-                .add(ModBlocks.BROWN_CONCRETE_BUTTON)
-                .add(ModBlocks.RED_CONCRETE_STAIRS)
-                .add(ModBlocks.RED_CONCRETE_SLAB)
-                .add(ModBlocks.RED_CONCRETE_WALL)
-                .add(ModBlocks.RED_CONCRETE_FENCE)
-                .add(ModBlocks.RED_CONCRETE_GATE)
-                .add(ModBlocks.RED_CONCRETE_BUTTON)
-                .add(ModBlocks.ORANGE_CONCRETE_STAIRS)
-                .add(ModBlocks.ORANGE_CONCRETE_SLAB)
-                .add(ModBlocks.ORANGE_CONCRETE_WALL)
-                .add(ModBlocks.ORANGE_CONCRETE_FENCE)
-                .add(ModBlocks.ORANGE_CONCRETE_GATE)
-                .add(ModBlocks.ORANGE_CONCRETE_BUTTON)
-                .add(ModBlocks.YELLOW_CONCRETE_STAIRS)
-                .add(ModBlocks.YELLOW_CONCRETE_SLAB)
-                .add(ModBlocks.YELLOW_CONCRETE_WALL)
-                .add(ModBlocks.YELLOW_CONCRETE_FENCE)
-                .add(ModBlocks.YELLOW_CONCRETE_GATE)
-                .add(ModBlocks.YELLOW_CONCRETE_BUTTON)
-                .add(ModBlocks.LIME_CONCRETE_STAIRS)
-                .add(ModBlocks.LIME_CONCRETE_SLAB)
-                .add(ModBlocks.LIME_CONCRETE_WALL)
-                .add(ModBlocks.LIME_CONCRETE_FENCE)
-                .add(ModBlocks.LIME_CONCRETE_GATE)
-                .add(ModBlocks.LIME_CONCRETE_BUTTON)
-                .add(ModBlocks.GREEN_CONCRETE_STAIRS)
-                .add(ModBlocks.GREEN_CONCRETE_SLAB)
-                .add(ModBlocks.GREEN_CONCRETE_WALL)
-                .add(ModBlocks.GREEN_CONCRETE_FENCE)
-                .add(ModBlocks.GREEN_CONCRETE_GATE)
-                .add(ModBlocks.GREEN_CONCRETE_BUTTON)
-                .add(ModBlocks.CYAN_CONCRETE_STAIRS)
-                .add(ModBlocks.CYAN_CONCRETE_SLAB)
-                .add(ModBlocks.CYAN_CONCRETE_WALL)
-                .add(ModBlocks.CYAN_CONCRETE_FENCE)
-                .add(ModBlocks.CYAN_CONCRETE_GATE)
-                .add(ModBlocks.CYAN_CONCRETE_BUTTON)
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_STAIRS)
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_SLAB)
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_WALL)
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_FENCE)
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_GATE)
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_BUTTON)
-                .add(ModBlocks.BLUE_CONCRETE_STAIRS)
-                .add(ModBlocks.BLUE_CONCRETE_SLAB)
-                .add(ModBlocks.BLUE_CONCRETE_WALL)
-                .add(ModBlocks.BLUE_CONCRETE_FENCE)
-                .add(ModBlocks.BLUE_CONCRETE_GATE)
-                .add(ModBlocks.BLUE_CONCRETE_BUTTON)
-                .add(ModBlocks.PURPLE_CONCRETE_STAIRS)
-                .add(ModBlocks.PURPLE_CONCRETE_SLAB)
-                .add(ModBlocks.PURPLE_CONCRETE_WALL)
-                .add(ModBlocks.PURPLE_CONCRETE_FENCE)
-                .add(ModBlocks.PURPLE_CONCRETE_GATE)
-                .add(ModBlocks.PURPLE_CONCRETE_BUTTON)
-                .add(ModBlocks.MAGENTA_CONCRETE_STAIRS)
-                .add(ModBlocks.MAGENTA_CONCRETE_SLAB)
-                .add(ModBlocks.MAGENTA_CONCRETE_WALL)
-                .add(ModBlocks.MAGENTA_CONCRETE_FENCE)
-                .add(ModBlocks.MAGENTA_CONCRETE_GATE)
-                .add(ModBlocks.MAGENTA_CONCRETE_BUTTON)
-                .add(ModBlocks.PINK_CONCRETE_STAIRS)
-                .add(ModBlocks.PINK_CONCRETE_SLAB)
-                .add(ModBlocks.PINK_CONCRETE_WALL)
-                .add(ModBlocks.PINK_CONCRETE_FENCE)
-                .add(ModBlocks.PINK_CONCRETE_GATE)
-                .add(ModBlocks.PINK_CONCRETE_BUTTON);
+    //Add Wall tags to each Block in the group
+        for (ModBlockGroups.MCBlock block : ModBlockGroups.MC_WALL){
+            valueLookupBuilder(BlockTags.WALLS).add(block.customBlock());
+        }
 
 
-    //Wall tags
-        valueLookupBuilder(BlockTags.WALLS)
-                .add(ModBlocks.WHITE_CONCRETE_WALL)
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_WALL)
-                .add(ModBlocks.GRAY_CONCRETE_WALL)
-                .add(ModBlocks.BLACK_CONCRETE_WALL)
-                .add(ModBlocks.BROWN_CONCRETE_WALL)
-                .add(ModBlocks.RED_CONCRETE_WALL)
-                .add(ModBlocks.ORANGE_CONCRETE_WALL)
-                .add(ModBlocks.YELLOW_CONCRETE_WALL)
-                .add(ModBlocks.LIME_CONCRETE_WALL)
-                .add(ModBlocks.GREEN_CONCRETE_WALL)
-                .add(ModBlocks.CYAN_CONCRETE_WALL)
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_WALL)
-                .add(ModBlocks.BLUE_CONCRETE_WALL)
-                .add(ModBlocks.PURPLE_CONCRETE_WALL)
-                .add(ModBlocks.MAGENTA_CONCRETE_WALL)
-                .add(ModBlocks.PINK_CONCRETE_WALL);
+    //Add Fence tags to each Block in the group
+        for (ModBlockGroups.MCBlock block : ModBlockGroups.MC_FENCE){
+            valueLookupBuilder(BlockTags.FENCES).add(block.customBlock());
+        }
 
 
-    //Fence tags
-        valueLookupBuilder(BlockTags.FENCES)
-                .add(ModBlocks.WHITE_CONCRETE_FENCE)
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_FENCE)
-                .add(ModBlocks.GRAY_CONCRETE_FENCE)
-                .add(ModBlocks.BLACK_CONCRETE_FENCE)
-                .add(ModBlocks.BROWN_CONCRETE_FENCE)
-                .add(ModBlocks.RED_CONCRETE_FENCE)
-                .add(ModBlocks.ORANGE_CONCRETE_FENCE)
-                .add(ModBlocks.YELLOW_CONCRETE_FENCE)
-                .add(ModBlocks.LIME_CONCRETE_FENCE)
-                .add(ModBlocks.GREEN_CONCRETE_FENCE)
-                .add(ModBlocks.CYAN_CONCRETE_FENCE)
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_FENCE)
-                .add(ModBlocks.BLUE_CONCRETE_FENCE)
-                .add(ModBlocks.PURPLE_CONCRETE_FENCE)
-                .add(ModBlocks.MAGENTA_CONCRETE_FENCE)
-                .add(ModBlocks.PINK_CONCRETE_FENCE);
+    //Add Gate tags to each Block in the group
+        for (ModBlockGroups.MCBlock block : ModBlockGroups.MC_GATE){
+            valueLookupBuilder(BlockTags.FENCE_GATES).add(block.customBlock());
+        }
 
 
-    //Gate tags
-        valueLookupBuilder(BlockTags.FENCE_GATES)
-                .add(ModBlocks.WHITE_CONCRETE_GATE)
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_GATE)
-                .add(ModBlocks.GRAY_CONCRETE_GATE)
-                .add(ModBlocks.BLACK_CONCRETE_GATE)
-                .add(ModBlocks.BROWN_CONCRETE_GATE)
-                .add(ModBlocks.RED_CONCRETE_GATE)
-                .add(ModBlocks.ORANGE_CONCRETE_GATE)
-                .add(ModBlocks.YELLOW_CONCRETE_GATE)
-                .add(ModBlocks.LIME_CONCRETE_GATE)
-                .add(ModBlocks.GREEN_CONCRETE_GATE)
-                .add(ModBlocks.CYAN_CONCRETE_GATE)
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_GATE)
-                .add(ModBlocks.BLUE_CONCRETE_GATE)
-                .add(ModBlocks.PURPLE_CONCRETE_GATE)
-                .add(ModBlocks.MAGENTA_CONCRETE_GATE)
-                .add(ModBlocks.PINK_CONCRETE_GATE);
+    //Add Button tags to each Block in the group
+        for (ModBlockGroups.MCBlock block : ModBlockGroups.MC_BUTTON){
+            valueLookupBuilder(BlockTags.BUTTONS).add(block.customBlock());
+        }
 
-
-    //Button tags
-        valueLookupBuilder(BlockTags.BUTTONS)
-                .add(ModBlocks.WHITE_CONCRETE_BUTTON)
-                .add(ModBlocks.LIGHT_GRAY_CONCRETE_BUTTON)
-                .add(ModBlocks.GRAY_CONCRETE_BUTTON)
-                .add(ModBlocks.BLACK_CONCRETE_BUTTON)
-                .add(ModBlocks.BROWN_CONCRETE_BUTTON)
-                .add(ModBlocks.RED_CONCRETE_BUTTON)
-                .add(ModBlocks.ORANGE_CONCRETE_BUTTON)
-                .add(ModBlocks.YELLOW_CONCRETE_BUTTON)
-                .add(ModBlocks.LIME_CONCRETE_BUTTON)
-                .add(ModBlocks.GREEN_CONCRETE_BUTTON)
-                .add(ModBlocks.CYAN_CONCRETE_BUTTON)
-                .add(ModBlocks.LIGHT_BLUE_CONCRETE_BUTTON)
-                .add(ModBlocks.BLUE_CONCRETE_BUTTON)
-                .add(ModBlocks.PURPLE_CONCRETE_BUTTON)
-                .add(ModBlocks.MAGENTA_CONCRETE_BUTTON)
-                .add(ModBlocks.PINK_CONCRETE_BUTTON);
-
-
-    //Panel tags
-        //valueLookupBuilder(BlockTags)
-                //.add(ModBlocks.WHITE_CONCRETE_PANEL);
     }
+
 }
