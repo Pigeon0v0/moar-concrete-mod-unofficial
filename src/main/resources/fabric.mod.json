@@ -1,15 +1,15 @@
 {
 	"schemaVersion": 1,
 	"id": "moarconcrete",
-	"version": "1.6.2",
-	"name": "Moar Concrete",
-	"description": "Adds moar concrete - specifically, slabs, stairs, walls, fences & gates, bricks, panels and buttons. Made (badly) by McJamweasel",
+	"version": "1.7.0",
+	"name": "Moar Concrete [Unofficial]",
+	"description": "Adds moar concrete - specifically, slabs, stairs, walls, fences & gates, bricks, panels and buttons. Made (badly) by McJamweasel. Migrated to MC 26.1.2+ by Pigeon0v0.",
 	"authors": [
-		"McJamweasel"
+		"McJamweasel",
+		"Pigeon0v0"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/Pigeon0v0/moar-concrete-mod-unofficial"
 	},
 	"license": "MIT",
 	"icon": "assets/moarconcrete/icon.png",
@@ -26,8 +26,8 @@
 		]
 	},
 	"depends": {
-		"fabricloader": ">=0.16.14",
-		"minecraft": ">=26.1.2",
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~26.1.2",
 		"java": ">=25",
 		"fabric-api": "*"
 	},
