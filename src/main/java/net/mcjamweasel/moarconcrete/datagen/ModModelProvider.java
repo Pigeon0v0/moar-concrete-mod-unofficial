@@ -17,7 +17,7 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator) {
 
-        BlockModelGenerators.BlockFamilyProvider whitePool = blockStateModelGenerator.family(Blocks.WHITE_CONCRETE);
+        BlockModelGenerators.BlockFamilyProvider whitePool = blockStateModelGenerator.family(Blocks.CONCRETE.white());
         whitePool.stairs(ModBlocks.WHITE_CONCRETE_STAIRS);
         whitePool.slab(ModBlocks.WHITE_CONCRETE_SLAB);
         whitePool.wall(ModBlocks.WHITE_CONCRETE_WALL);
@@ -28,7 +28,7 @@ public class ModModelProvider extends FabricModelProvider {
         whiteBrickPool.slab(ModBlocks.WHITE_CONCRETE_BRICK_SLAB);
         blockStateModelGenerator.createGlassBlocks(ModBlocks.WHITE_CONCRETE_TEXTURE, ModBlocks.WHITE_CONCRETE_PANEL);
 
-        BlockModelGenerators.BlockFamilyProvider lightGrayPool = blockStateModelGenerator.family(Blocks.LIGHT_GRAY_CONCRETE);
+        BlockModelGenerators.BlockFamilyProvider lightGrayPool = blockStateModelGenerator.family(Blocks.CONCRETE.lightGray());
         lightGrayPool.stairs(ModBlocks.LIGHT_GRAY_CONCRETE_STAIRS);
         lightGrayPool.slab(ModBlocks.LIGHT_GRAY_CONCRETE_SLAB);
         lightGrayPool.wall(ModBlocks.LIGHT_GRAY_CONCRETE_WALL);
@@ -39,7 +39,7 @@ public class ModModelProvider extends FabricModelProvider {
         lightGrayBrickPool.slab(ModBlocks.LIGHT_GRAY_CONCRETE_BRICK_SLAB);
         blockStateModelGenerator.createGlassBlocks(ModBlocks.LIGHT_GRAY_CONCRETE_TEXTURE, ModBlocks.LIGHT_GRAY_CONCRETE_PANEL);
 
-        BlockModelGenerators.BlockFamilyProvider grayPool = blockStateModelGenerator.family(Blocks.GRAY_CONCRETE);
+        BlockModelGenerators.BlockFamilyProvider grayPool = blockStateModelGenerator.family(Blocks.CONCRETE.gray());
         grayPool.stairs(ModBlocks.GRAY_CONCRETE_STAIRS);
         grayPool.slab(ModBlocks.GRAY_CONCRETE_SLAB);
         grayPool.wall(ModBlocks.GRAY_CONCRETE_WALL);
@@ -50,7 +50,7 @@ public class ModModelProvider extends FabricModelProvider {
         grayBrickPool.slab(ModBlocks.GRAY_CONCRETE_BRICK_SLAB);
         blockStateModelGenerator.createGlassBlocks(ModBlocks.GRAY_CONCRETE_TEXTURE, ModBlocks.GRAY_CONCRETE_PANEL);
 
-        BlockModelGenerators.BlockFamilyProvider blackPool = blockStateModelGenerator.family(Blocks.BLACK_CONCRETE);
+        BlockModelGenerators.BlockFamilyProvider blackPool = blockStateModelGenerator.family(Blocks.CONCRETE.black());
         blackPool.stairs(ModBlocks.BLACK_CONCRETE_STAIRS);
         blackPool.slab(ModBlocks.BLACK_CONCRETE_SLAB);
         blackPool.wall(ModBlocks.BLACK_CONCRETE_WALL);
@@ -61,7 +61,7 @@ public class ModModelProvider extends FabricModelProvider {
         blackBrickPool.slab(ModBlocks.BLACK_CONCRETE_BRICK_SLAB);
         blockStateModelGenerator.createGlassBlocks(ModBlocks.BLACK_CONCRETE_TEXTURE, ModBlocks.BLACK_CONCRETE_PANEL);
 
-        BlockModelGenerators.BlockFamilyProvider brownPool = blockStateModelGenerator.family(Blocks.BROWN_CONCRETE);
+        BlockModelGenerators.BlockFamilyProvider brownPool = blockStateModelGenerator.family(Blocks.CONCRETE.brown());
         brownPool.stairs(ModBlocks.BROWN_CONCRETE_STAIRS);
         brownPool.slab(ModBlocks.BROWN_CONCRETE_SLAB);
         brownPool.wall(ModBlocks.BROWN_CONCRETE_WALL);
@@ -72,7 +72,7 @@ public class ModModelProvider extends FabricModelProvider {
         brownBrickPool.slab(ModBlocks.BROWN_CONCRETE_BRICK_SLAB);
         blockStateModelGenerator.createGlassBlocks(ModBlocks.BROWN_CONCRETE_TEXTURE, ModBlocks.BROWN_CONCRETE_PANEL);
 
-        BlockModelGenerators.BlockFamilyProvider redPool = blockStateModelGenerator.family(Blocks.RED_CONCRETE);
+        BlockModelGenerators.BlockFamilyProvider redPool = blockStateModelGenerator.family(Blocks.CONCRETE.red());
         redPool.stairs(ModBlocks.RED_CONCRETE_STAIRS);
         redPool.slab(ModBlocks.RED_CONCRETE_SLAB);
         redPool.wall(ModBlocks.RED_CONCRETE_WALL);
@@ -83,7 +83,7 @@ public class ModModelProvider extends FabricModelProvider {
         redBrickPool.slab(ModBlocks.RED_CONCRETE_BRICK_SLAB);
         blockStateModelGenerator.createGlassBlocks(ModBlocks.RED_CONCRETE_TEXTURE, ModBlocks.RED_CONCRETE_PANEL);
 
-        BlockModelGenerators.BlockFamilyProvider orangePool = blockStateModelGenerator.family(Blocks.ORANGE_CONCRETE);
+        BlockModelGenerators.BlockFamilyProvider orangePool = blockStateModelGenerator.family(Blocks.CONCRETE.orange());
         orangePool.stairs(ModBlocks.ORANGE_CONCRETE_STAIRS);
         orangePool.slab(ModBlocks.ORANGE_CONCRETE_SLAB);
         orangePool.wall(ModBlocks.ORANGE_CONCRETE_WALL);
@@ -94,7 +94,7 @@ public class ModModelProvider extends FabricModelProvider {
         orangeBrickPool.slab(ModBlocks.ORANGE_CONCRETE_BRICK_SLAB);
         blockStateModelGenerator.createGlassBlocks(ModBlocks.ORANGE_CONCRETE_TEXTURE, ModBlocks.ORANGE_CONCRETE_PANEL);
 
-        BlockModelGenerators.BlockFamilyProvider yellowPool = blockStateModelGenerator.family(Blocks.YELLOW_CONCRETE);
+        BlockModelGenerators.BlockFamilyProvider yellowPool = blockStateModelGenerator.family(Blocks.CONCRETE.yellow());
         yellowPool.stairs(ModBlocks.YELLOW_CONCRETE_STAIRS);
         yellowPool.slab(ModBlocks.YELLOW_CONCRETE_SLAB);
         yellowPool.wall(ModBlocks.YELLOW_CONCRETE_WALL);
@@ -105,7 +105,7 @@ public class ModModelProvider extends FabricModelProvider {
         yellowBrickPool.slab(ModBlocks.YELLOW_CONCRETE_BRICK_SLAB);
         blockStateModelGenerator.createGlassBlocks(ModBlocks.YELLOW_CONCRETE_TEXTURE, ModBlocks.YELLOW_CONCRETE_PANEL);
 
-        BlockModelGenerators.BlockFamilyProvider limePool = blockStateModelGenerator.family(Blocks.LIME_CONCRETE);
+        BlockModelGenerators.BlockFamilyProvider limePool = blockStateModelGenerator.family(Blocks.CONCRETE.lime());
         limePool.stairs(ModBlocks.LIME_CONCRETE_STAIRS);
         limePool.slab(ModBlocks.LIME_CONCRETE_SLAB);
         limePool.wall(ModBlocks.LIME_CONCRETE_WALL);
@@ -116,7 +116,7 @@ public class ModModelProvider extends FabricModelProvider {
         limeBrickPool.slab(ModBlocks.LIME_CONCRETE_BRICK_SLAB);
         blockStateModelGenerator.createGlassBlocks(ModBlocks.LIME_CONCRETE_TEXTURE, ModBlocks.LIME_CONCRETE_PANEL);
 
-        BlockModelGenerators.BlockFamilyProvider greenPool = blockStateModelGenerator.family(Blocks.GREEN_CONCRETE);
+        BlockModelGenerators.BlockFamilyProvider greenPool = blockStateModelGenerator.family(Blocks.CONCRETE.green());
         greenPool.stairs(ModBlocks.GREEN_CONCRETE_STAIRS);
         greenPool.slab(ModBlocks.GREEN_CONCRETE_SLAB);
         greenPool.wall(ModBlocks.GREEN_CONCRETE_WALL);
@@ -127,7 +127,7 @@ public class ModModelProvider extends FabricModelProvider {
         greenBrickPool.slab(ModBlocks.GREEN_CONCRETE_BRICK_SLAB);
         blockStateModelGenerator.createGlassBlocks(ModBlocks.GREEN_CONCRETE_TEXTURE, ModBlocks.GREEN_CONCRETE_PANEL);
 
-        BlockModelGenerators.BlockFamilyProvider cyanPool = blockStateModelGenerator.family(Blocks.CYAN_CONCRETE);
+        BlockModelGenerators.BlockFamilyProvider cyanPool = blockStateModelGenerator.family(Blocks.CONCRETE.cyan());
         cyanPool.stairs(ModBlocks.CYAN_CONCRETE_STAIRS);
         cyanPool.slab(ModBlocks.CYAN_CONCRETE_SLAB);
         cyanPool.wall(ModBlocks.CYAN_CONCRETE_WALL);
@@ -138,7 +138,7 @@ public class ModModelProvider extends FabricModelProvider {
         cyanBrickPool.slab(ModBlocks.CYAN_CONCRETE_BRICK_SLAB);
         blockStateModelGenerator.createGlassBlocks(ModBlocks.CYAN_CONCRETE_TEXTURE, ModBlocks.CYAN_CONCRETE_PANEL);
 
-        BlockModelGenerators.BlockFamilyProvider lightBluePool = blockStateModelGenerator.family(Blocks.LIGHT_BLUE_CONCRETE);
+        BlockModelGenerators.BlockFamilyProvider lightBluePool = blockStateModelGenerator.family(Blocks.CONCRETE.lightBlue());
         lightBluePool.stairs(ModBlocks.LIGHT_BLUE_CONCRETE_STAIRS);
         lightBluePool.slab(ModBlocks.LIGHT_BLUE_CONCRETE_SLAB);
         lightBluePool.wall(ModBlocks.LIGHT_BLUE_CONCRETE_WALL);
@@ -149,7 +149,7 @@ public class ModModelProvider extends FabricModelProvider {
         lightBlueBrickPool.slab(ModBlocks.LIGHT_BLUE_CONCRETE_BRICK_SLAB);
         blockStateModelGenerator.createGlassBlocks(ModBlocks.LIGHT_BLUE_CONCRETE_TEXTURE, ModBlocks.LIGHT_BLUE_CONCRETE_PANEL);
 
-        BlockModelGenerators.BlockFamilyProvider bluePool = blockStateModelGenerator.family(Blocks.BLUE_CONCRETE);
+        BlockModelGenerators.BlockFamilyProvider bluePool = blockStateModelGenerator.family(Blocks.CONCRETE.blue());
         bluePool.stairs(ModBlocks.BLUE_CONCRETE_STAIRS);
         bluePool.slab(ModBlocks.BLUE_CONCRETE_SLAB);
         bluePool.wall(ModBlocks.BLUE_CONCRETE_WALL);
@@ -160,7 +160,7 @@ public class ModModelProvider extends FabricModelProvider {
         blueBrickPool.slab(ModBlocks.BLUE_CONCRETE_BRICK_SLAB);
         blockStateModelGenerator.createGlassBlocks(ModBlocks.BLUE_CONCRETE_TEXTURE, ModBlocks.BLUE_CONCRETE_PANEL);
 
-        BlockModelGenerators.BlockFamilyProvider purplePool = blockStateModelGenerator.family(Blocks.PURPLE_CONCRETE);
+        BlockModelGenerators.BlockFamilyProvider purplePool = blockStateModelGenerator.family(Blocks.CONCRETE.purple());
         purplePool.stairs(ModBlocks.PURPLE_CONCRETE_STAIRS);
         purplePool.slab(ModBlocks.PURPLE_CONCRETE_SLAB);
         purplePool.wall(ModBlocks.PURPLE_CONCRETE_WALL);
@@ -171,7 +171,7 @@ public class ModModelProvider extends FabricModelProvider {
         purpleBrickPool.slab(ModBlocks.PURPLE_CONCRETE_BRICK_SLAB);
         blockStateModelGenerator.createGlassBlocks(ModBlocks.PURPLE_CONCRETE_TEXTURE, ModBlocks.PURPLE_CONCRETE_PANEL);
 
-        BlockModelGenerators.BlockFamilyProvider magentaPool = blockStateModelGenerator.family(Blocks.MAGENTA_CONCRETE);
+        BlockModelGenerators.BlockFamilyProvider magentaPool = blockStateModelGenerator.family(Blocks.CONCRETE.magenta());
         magentaPool.stairs(ModBlocks.MAGENTA_CONCRETE_STAIRS);
         magentaPool.slab(ModBlocks.MAGENTA_CONCRETE_SLAB);
         magentaPool.wall(ModBlocks.MAGENTA_CONCRETE_WALL);
@@ -182,7 +182,7 @@ public class ModModelProvider extends FabricModelProvider {
         magentaBrickPool.slab(ModBlocks.MAGENTA_CONCRETE_BRICK_SLAB);
         blockStateModelGenerator.createGlassBlocks(ModBlocks.MAGENTA_CONCRETE_TEXTURE, ModBlocks.MAGENTA_CONCRETE_PANEL);
 
-        BlockModelGenerators.BlockFamilyProvider pinkPool = blockStateModelGenerator.family(Blocks.PINK_CONCRETE);
+        BlockModelGenerators.BlockFamilyProvider pinkPool = blockStateModelGenerator.family(Blocks.CONCRETE.pink());
         pinkPool.stairs(ModBlocks.PINK_CONCRETE_STAIRS);
         pinkPool.slab(ModBlocks.PINK_CONCRETE_SLAB);
         pinkPool.wall(ModBlocks.PINK_CONCRETE_WALL);

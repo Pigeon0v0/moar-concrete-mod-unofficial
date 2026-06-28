@@ -2,8 +2,12 @@ package net.mcjamweasel.moarconcrete.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
+import net.mcjamweasel.moarconcrete.MoarConcrete;
 import net.mcjamweasel.moarconcrete.ModBlockGroups;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -21,33 +25,33 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
             //For each Block in the group
             for (ModBlockGroups.MCBlock block : group) {
                 //Add pickaxe & stone tool tags
-                valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE).add(block.customBlock());
-                valueLookupBuilder(BlockTags.NEEDS_STONE_TOOL).add(block.customBlock());
+                tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MoarConcrete.MOD_ID, block.customBlock().getName().toString())));
+                tag(BlockTags.NEEDS_STONE_TOOL).add(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MoarConcrete.MOD_ID, block.customBlock().getName().toString())));
             }
         }
 
 
     //Add Wall tags to each Block in the group
         for (ModBlockGroups.MCBlock block : ModBlockGroups.MC_WALL){
-            valueLookupBuilder(BlockTags.WALLS).add(block.customBlock());
+            tag(BlockTags.WALLS).add(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MoarConcrete.MOD_ID, block.customBlock().getName().toString())));
         }
 
 
     //Add Fence tags to each Block in the group
         for (ModBlockGroups.MCBlock block : ModBlockGroups.MC_FENCE){
-            valueLookupBuilder(BlockTags.FENCES).add(block.customBlock());
+            tag(BlockTags.FENCES).add(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MoarConcrete.MOD_ID, block.customBlock().getName().toString())));
         }
 
 
     //Add Gate tags to each Block in the group
         for (ModBlockGroups.MCBlock block : ModBlockGroups.MC_GATE){
-            valueLookupBuilder(BlockTags.FENCE_GATES).add(block.customBlock());
+            tag(BlockTags.FENCE_GATES).add(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MoarConcrete.MOD_ID, block.customBlock().getName().toString())));
         }
 
 
     //Add Button tags to each Block in the group
         for (ModBlockGroups.MCBlock block : ModBlockGroups.MC_BUTTON){
-            valueLookupBuilder(BlockTags.BUTTONS).add(block.customBlock());
+            tag(BlockTags.BUTTONS).add(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MoarConcrete.MOD_ID, block.customBlock().getName().toString())));
         }
 
     }
