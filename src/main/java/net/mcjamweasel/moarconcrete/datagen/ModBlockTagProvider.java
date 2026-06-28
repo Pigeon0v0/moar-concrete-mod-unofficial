@@ -1,29 +1,28 @@
 package net.mcjamweasel.moarconcrete.datagen;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.mcjamweasel.moarconcrete.block.ModBlocks;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.BlockTags;
-
+import net.minecraft.core.HolderLookup;
+import net.minecraft.tags.BlockTags;
 import java.util.concurrent.CompletableFuture;
 
-public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
-    public ModBlockTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
+    public ModBlockTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 
     @Override
-    protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+    protected void addTags(HolderLookup.Provider wrapperLookup) {
 
     //Pickaxe Mineable
-        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+        valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.WHITE_CONCRETE_STAIRS)
                 .add(ModBlocks.WHITE_CONCRETE_SLAB)
                 .add(ModBlocks.WHITE_CONCRETE_WALL)
                 .add(ModBlocks.WHITE_CONCRETE_FENCE)
                 .add(ModBlocks.WHITE_CONCRETE_GATE)
-                .add(ModBlocks.WHITE_CONCRETE_PANEL)
+                // .add(ModBlocks.WHITE_CONCRETE_PANEL)
                 .add(ModBlocks.WHITE_CONCRETE_BUTTON)
                 .add(ModBlocks.LIGHT_GRAY_CONCRETE_STAIRS)
                 .add(ModBlocks.LIGHT_GRAY_CONCRETE_SLAB)
@@ -118,13 +117,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
 
     //Needs Stone Tool
-        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+        valueLookupBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.WHITE_CONCRETE_STAIRS)
                 .add(ModBlocks.WHITE_CONCRETE_SLAB)
                 .add(ModBlocks.WHITE_CONCRETE_WALL)
                 .add(ModBlocks.WHITE_CONCRETE_FENCE)
                 .add(ModBlocks.WHITE_CONCRETE_GATE)
-                .add(ModBlocks.WHITE_CONCRETE_PANEL)
+                // .add(ModBlocks.WHITE_CONCRETE_PANEL)
                 .add(ModBlocks.WHITE_CONCRETE_BUTTON)
                 .add(ModBlocks.LIGHT_GRAY_CONCRETE_STAIRS)
                 .add(ModBlocks.LIGHT_GRAY_CONCRETE_SLAB)
@@ -219,7 +218,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
 
     //Wall tags
-        getOrCreateTagBuilder(BlockTags.WALLS)
+        valueLookupBuilder(BlockTags.WALLS)
                 .add(ModBlocks.WHITE_CONCRETE_WALL)
                 .add(ModBlocks.LIGHT_GRAY_CONCRETE_WALL)
                 .add(ModBlocks.GRAY_CONCRETE_WALL)
@@ -239,7 +238,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
 
     //Fence tags
-        getOrCreateTagBuilder(BlockTags.FENCES)
+        valueLookupBuilder(BlockTags.FENCES)
                 .add(ModBlocks.WHITE_CONCRETE_FENCE)
                 .add(ModBlocks.LIGHT_GRAY_CONCRETE_FENCE)
                 .add(ModBlocks.GRAY_CONCRETE_FENCE)
@@ -259,7 +258,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
 
     //Gate tags
-        getOrCreateTagBuilder(BlockTags.FENCE_GATES)
+        valueLookupBuilder(BlockTags.FENCE_GATES)
                 .add(ModBlocks.WHITE_CONCRETE_GATE)
                 .add(ModBlocks.LIGHT_GRAY_CONCRETE_GATE)
                 .add(ModBlocks.GRAY_CONCRETE_GATE)
@@ -279,7 +278,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
 
     //Button tags
-        getOrCreateTagBuilder(BlockTags.BUTTONS)
+        valueLookupBuilder(BlockTags.BUTTONS)
                 .add(ModBlocks.WHITE_CONCRETE_BUTTON)
                 .add(ModBlocks.LIGHT_GRAY_CONCRETE_BUTTON)
                 .add(ModBlocks.GRAY_CONCRETE_BUTTON)
@@ -299,7 +298,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
 
     //Panel tags
-        //getOrCreateTagBuilder(BlockTags)
+        //valueLookupBuilder(BlockTags)
                 //.add(ModBlocks.WHITE_CONCRETE_PANEL);
     }
 }

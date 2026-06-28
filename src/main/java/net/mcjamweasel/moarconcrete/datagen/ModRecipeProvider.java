@@ -1,259 +1,208 @@
 package net.mcjamweasel.moarconcrete.datagen;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.mcjamweasel.moarconcrete.block.ModBlocks;
-import net.minecraft.block.Blocks;
-import net.minecraft.data.server.recipe.RecipeExporter;
-import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
-import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.item.Items;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.recipes.*;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
 
 
-    public ModRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+    public ModRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 
-
-//Creates the recipes for each block, one set per colour.
-//Stone cutting for stairs, slabs, walls.
-//Crafting table for all.
     @Override
-    public void generate(RecipeExporter exporter) {
+    protected RecipeProvider createRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
+        return new RecipeProvider(registries, output) {
+            @Override
+            public void buildRecipes() {
+                //White
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WHITE_CONCRETE_STAIRS, Blocks.WHITE_CONCRETE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WHITE_CONCRETE_SLAB, Blocks.WHITE_CONCRETE, 2);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WHITE_CONCRETE_SLAB, Ingredient.of(Blocks.WHITE_CONCRETE));
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WHITE_CONCRETE_WALL, Ingredient.of(Blocks.WHITE_CONCRETE));
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WHITE_CONCRETE_WALL, Blocks.WHITE_CONCRETE);
+                stairBuilder(ModBlocks.WHITE_CONCRETE_STAIRS, Ingredient.of(Items.WHITE_CONCRETE));
+                fenceBuilder(ModBlocks.WHITE_CONCRETE_FENCE, Ingredient.of(Items.WHITE_CONCRETE));
+                fenceGateBuilder(ModBlocks.WHITE_CONCRETE_GATE, Ingredient.of(Items.WHITE_CONCRETE));
+                buttonBuilder(ModBlocks.WHITE_CONCRETE_BUTTON, Ingredient.of(Items.WHITE_CONCRETE));
 
-    //White
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.WHITE_CONCRETE_STAIRS, Blocks.WHITE_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.WHITE_CONCRETE_SLAB, Blocks.WHITE_CONCRETE, 2);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.WHITE_CONCRETE_SLAB, Blocks.WHITE_CONCRETE);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.WHITE_CONCRETE_WALL, Blocks.WHITE_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.WHITE_CONCRETE_WALL, Blocks.WHITE_CONCRETE);
-        concreteStairRecipe(exporter, ModBlocks.WHITE_CONCRETE_STAIRS, Items.WHITE_CONCRETE);
-        concreteFenceRecipe(exporter, ModBlocks.WHITE_CONCRETE_FENCE, Items.WHITE_CONCRETE);
-        concreteGateRecipe(exporter, ModBlocks.WHITE_CONCRETE_GATE, Items.WHITE_CONCRETE);
-        concreteButtonRecipe(exporter, ModBlocks.WHITE_CONCRETE_BUTTON, Items.WHITE_CONCRETE);
+                //Light Gray
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_GRAY_CONCRETE_STAIRS, Blocks.LIGHT_GRAY_CONCRETE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_GRAY_CONCRETE_SLAB, Blocks.LIGHT_GRAY_CONCRETE, 2);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_GRAY_CONCRETE_SLAB, Ingredient.of(Blocks.LIGHT_GRAY_CONCRETE));
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_GRAY_CONCRETE_WALL, Ingredient.of(Blocks.LIGHT_GRAY_CONCRETE));
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_GRAY_CONCRETE_WALL, Blocks.LIGHT_GRAY_CONCRETE);
+                stairBuilder(ModBlocks.LIGHT_GRAY_CONCRETE_STAIRS, Ingredient.of(Items.LIGHT_GRAY_CONCRETE));
+                fenceBuilder(ModBlocks.LIGHT_GRAY_CONCRETE_FENCE, Ingredient.of(Items.LIGHT_GRAY_CONCRETE));
+                fenceGateBuilder(ModBlocks.LIGHT_GRAY_CONCRETE_GATE, Ingredient.of(Items.LIGHT_GRAY_CONCRETE));
+                buttonBuilder(ModBlocks.LIGHT_GRAY_CONCRETE_BUTTON, Ingredient.of(Items.LIGHT_GRAY_CONCRETE));
 
-    //Light Gray
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_GRAY_CONCRETE_STAIRS, Blocks.LIGHT_GRAY_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_GRAY_CONCRETE_SLAB, Blocks.LIGHT_GRAY_CONCRETE, 2);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_GRAY_CONCRETE_SLAB, Blocks.LIGHT_GRAY_CONCRETE);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_GRAY_CONCRETE_WALL, Blocks.LIGHT_GRAY_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_GRAY_CONCRETE_WALL, Blocks.LIGHT_GRAY_CONCRETE);
-        concreteStairRecipe(exporter, ModBlocks.LIGHT_GRAY_CONCRETE_STAIRS, Items.LIGHT_GRAY_CONCRETE);
-        concreteFenceRecipe(exporter, ModBlocks.LIGHT_GRAY_CONCRETE_FENCE, Items.LIGHT_GRAY_CONCRETE);
-        concreteGateRecipe(exporter, ModBlocks.LIGHT_GRAY_CONCRETE_GATE, Items.LIGHT_GRAY_CONCRETE);
-        concreteButtonRecipe(exporter, ModBlocks.LIGHT_GRAY_CONCRETE_BUTTON, Items.LIGHT_GRAY_CONCRETE);
+                //Gray
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GRAY_CONCRETE_STAIRS, Blocks.GRAY_CONCRETE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GRAY_CONCRETE_SLAB, Blocks.GRAY_CONCRETE, 2);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GRAY_CONCRETE_SLAB, Ingredient.of(Blocks.GRAY_CONCRETE));
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GRAY_CONCRETE_WALL, Ingredient.of(Blocks.GRAY_CONCRETE));
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GRAY_CONCRETE_WALL, Blocks.GRAY_CONCRETE);
+                stairBuilder(ModBlocks.GRAY_CONCRETE_STAIRS, Ingredient.of(Items.GRAY_CONCRETE));
+                fenceBuilder(ModBlocks.GRAY_CONCRETE_FENCE, Ingredient.of(Items.GRAY_CONCRETE));
+                fenceGateBuilder(ModBlocks.GRAY_CONCRETE_GATE, Ingredient.of(Items.GRAY_CONCRETE));
+                buttonBuilder(ModBlocks.GRAY_CONCRETE_BUTTON, Ingredient.of(Items.GRAY_CONCRETE));
 
-    //Gray
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.GRAY_CONCRETE_STAIRS, Blocks.GRAY_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.GRAY_CONCRETE_SLAB, Blocks.GRAY_CONCRETE, 2);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.GRAY_CONCRETE_SLAB, Blocks.GRAY_CONCRETE);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.GRAY_CONCRETE_WALL, Blocks.GRAY_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.GRAY_CONCRETE_WALL, Blocks.GRAY_CONCRETE);
-        concreteStairRecipe(exporter, ModBlocks.GRAY_CONCRETE_STAIRS, Items.GRAY_CONCRETE);
-        concreteFenceRecipe(exporter, ModBlocks.GRAY_CONCRETE_FENCE, Items.GRAY_CONCRETE);
-        concreteGateRecipe(exporter, ModBlocks.GRAY_CONCRETE_GATE, Items.GRAY_CONCRETE);
-        concreteButtonRecipe(exporter, ModBlocks.GRAY_CONCRETE_BUTTON, Items.GRAY_CONCRETE);
+                //Black
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLACK_CONCRETE_STAIRS, Blocks.BLACK_CONCRETE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLACK_CONCRETE_SLAB, Blocks.BLACK_CONCRETE, 2);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLACK_CONCRETE_SLAB, Ingredient.of(Blocks.BLACK_CONCRETE));
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLACK_CONCRETE_WALL, Ingredient.of(Blocks.BLACK_CONCRETE));
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLACK_CONCRETE_WALL, Blocks.BLACK_CONCRETE);
+                stairBuilder(ModBlocks.BLACK_CONCRETE_STAIRS, Ingredient.of(Items.BLACK_CONCRETE));
+                fenceBuilder(ModBlocks.BLACK_CONCRETE_FENCE, Ingredient.of(Items.BLACK_CONCRETE));
+                fenceGateBuilder(ModBlocks.BLACK_CONCRETE_GATE, Ingredient.of(Items.BLACK_CONCRETE));
+                buttonBuilder(ModBlocks.BLACK_CONCRETE_BUTTON, Ingredient.of(Items.BLACK_CONCRETE));
 
-    //Black
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLACK_CONCRETE_STAIRS, Blocks.BLACK_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLACK_CONCRETE_SLAB, Blocks.BLACK_CONCRETE, 2);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLACK_CONCRETE_SLAB, Blocks.BLACK_CONCRETE);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLACK_CONCRETE_WALL, Blocks.BLACK_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLACK_CONCRETE_WALL, Blocks.BLACK_CONCRETE);
-        concreteStairRecipe(exporter, ModBlocks.BLACK_CONCRETE_STAIRS, Items.BLACK_CONCRETE);
-        concreteFenceRecipe(exporter, ModBlocks.BLACK_CONCRETE_FENCE, Items.BLACK_CONCRETE);
-        concreteGateRecipe(exporter, ModBlocks.BLACK_CONCRETE_GATE, Items.BLACK_CONCRETE);
-        concreteButtonRecipe(exporter, ModBlocks.BLACK_CONCRETE_BUTTON, Items.BLACK_CONCRETE);
+                //Brown
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BROWN_CONCRETE_STAIRS, Blocks.BROWN_CONCRETE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BROWN_CONCRETE_SLAB, Blocks.BROWN_CONCRETE, 2);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BROWN_CONCRETE_SLAB, Ingredient.of(Blocks.BROWN_CONCRETE));
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BROWN_CONCRETE_WALL, Ingredient.of(Blocks.BROWN_CONCRETE));
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BROWN_CONCRETE_WALL, Blocks.BROWN_CONCRETE);
+                stairBuilder(ModBlocks.BROWN_CONCRETE_STAIRS, Ingredient.of(Items.BROWN_CONCRETE));
+                fenceBuilder(ModBlocks.BROWN_CONCRETE_FENCE, Ingredient.of(Items.BROWN_CONCRETE));
+                fenceGateBuilder(ModBlocks.BROWN_CONCRETE_GATE, Ingredient.of(Items.BROWN_CONCRETE));
+                buttonBuilder(ModBlocks.BROWN_CONCRETE_BUTTON, Ingredient.of(Items.BROWN_CONCRETE));
 
-    //Brown
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BROWN_CONCRETE_STAIRS, Blocks.BROWN_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BROWN_CONCRETE_SLAB, Blocks.BROWN_CONCRETE, 2);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BROWN_CONCRETE_SLAB, Blocks.BROWN_CONCRETE);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BROWN_CONCRETE_WALL, Blocks.BROWN_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BROWN_CONCRETE_WALL, Blocks.BROWN_CONCRETE);
-        concreteStairRecipe(exporter, ModBlocks.BROWN_CONCRETE_STAIRS, Items.BROWN_CONCRETE);
-        concreteFenceRecipe(exporter, ModBlocks.BROWN_CONCRETE_FENCE, Items.BROWN_CONCRETE);
-        concreteGateRecipe(exporter, ModBlocks.BROWN_CONCRETE_GATE, Items.BROWN_CONCRETE);
-        concreteButtonRecipe(exporter, ModBlocks.BROWN_CONCRETE_BUTTON, Items.BROWN_CONCRETE);
+                //Red
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_CONCRETE_STAIRS, Blocks.RED_CONCRETE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_CONCRETE_SLAB, Blocks.RED_CONCRETE, 2);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_CONCRETE_SLAB, Ingredient.of(Blocks.RED_CONCRETE));
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_CONCRETE_WALL, Ingredient.of(Blocks.RED_CONCRETE));
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_CONCRETE_WALL, Blocks.RED_CONCRETE);
+                stairBuilder(ModBlocks.RED_CONCRETE_STAIRS, Ingredient.of(Items.RED_CONCRETE));
+                fenceBuilder(ModBlocks.RED_CONCRETE_FENCE, Ingredient.of(Items.RED_CONCRETE));
+                fenceGateBuilder(ModBlocks.RED_CONCRETE_GATE, Ingredient.of(Items.RED_CONCRETE));
+                buttonBuilder(ModBlocks.RED_CONCRETE_BUTTON, Ingredient.of(Items.RED_CONCRETE));
 
-    //Red
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_CONCRETE_STAIRS, Blocks.RED_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_CONCRETE_SLAB, Blocks.RED_CONCRETE, 2);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_CONCRETE_SLAB, Blocks.RED_CONCRETE);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_CONCRETE_WALL, Blocks.RED_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_CONCRETE_WALL, Blocks.RED_CONCRETE);
-        concreteStairRecipe(exporter, ModBlocks.RED_CONCRETE_STAIRS, Items.RED_CONCRETE);
-        concreteFenceRecipe(exporter, ModBlocks.RED_CONCRETE_FENCE, Items.RED_CONCRETE);
-        concreteGateRecipe(exporter, ModBlocks.RED_CONCRETE_GATE, Items.RED_CONCRETE);
-        concreteButtonRecipe(exporter, ModBlocks.RED_CONCRETE_BUTTON, Items.RED_CONCRETE);
+                //Orange
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ORANGE_CONCRETE_STAIRS, Blocks.ORANGE_CONCRETE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ORANGE_CONCRETE_SLAB, Blocks.ORANGE_CONCRETE, 2);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ORANGE_CONCRETE_SLAB, Ingredient.of(Blocks.ORANGE_CONCRETE));
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ORANGE_CONCRETE_WALL, Ingredient.of(Blocks.ORANGE_CONCRETE));
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ORANGE_CONCRETE_WALL, Blocks.ORANGE_CONCRETE);
+                stairBuilder(ModBlocks.ORANGE_CONCRETE_STAIRS, Ingredient.of(Items.ORANGE_CONCRETE));
+                fenceBuilder(ModBlocks.ORANGE_CONCRETE_FENCE, Ingredient.of(Items.ORANGE_CONCRETE));
+                fenceGateBuilder(ModBlocks.ORANGE_CONCRETE_GATE, Ingredient.of(Items.ORANGE_CONCRETE));
+                buttonBuilder(ModBlocks.ORANGE_CONCRETE_BUTTON, Ingredient.of(Items.ORANGE_CONCRETE));
 
-    //Orange
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ORANGE_CONCRETE_STAIRS, Blocks.ORANGE_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ORANGE_CONCRETE_SLAB, Blocks.ORANGE_CONCRETE, 2);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ORANGE_CONCRETE_SLAB, Blocks.ORANGE_CONCRETE);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ORANGE_CONCRETE_WALL, Blocks.ORANGE_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ORANGE_CONCRETE_WALL, Blocks.ORANGE_CONCRETE);
-        concreteStairRecipe(exporter, ModBlocks.ORANGE_CONCRETE_STAIRS, Items.ORANGE_CONCRETE);
-        concreteFenceRecipe(exporter, ModBlocks.ORANGE_CONCRETE_FENCE, Items.ORANGE_CONCRETE);
-        concreteGateRecipe(exporter, ModBlocks.ORANGE_CONCRETE_GATE, Items.ORANGE_CONCRETE);
-        concreteButtonRecipe(exporter, ModBlocks.ORANGE_CONCRETE_BUTTON, Items.ORANGE_CONCRETE);
+                //Yellow
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.YELLOW_CONCRETE_STAIRS, Blocks.YELLOW_CONCRETE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.YELLOW_CONCRETE_SLAB, Blocks.YELLOW_CONCRETE, 2);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.YELLOW_CONCRETE_SLAB, Ingredient.of(Blocks.YELLOW_CONCRETE));
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.YELLOW_CONCRETE_WALL, Ingredient.of(Blocks.YELLOW_CONCRETE));
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.YELLOW_CONCRETE_WALL, Blocks.YELLOW_CONCRETE);
+                stairBuilder(ModBlocks.YELLOW_CONCRETE_STAIRS, Ingredient.of(Items.YELLOW_CONCRETE));
+                fenceBuilder(ModBlocks.YELLOW_CONCRETE_FENCE, Ingredient.of(Items.YELLOW_CONCRETE));
+                fenceGateBuilder(ModBlocks.YELLOW_CONCRETE_GATE, Ingredient.of(Items.YELLOW_CONCRETE));
+                buttonBuilder(ModBlocks.YELLOW_CONCRETE_BUTTON, Ingredient.of(Items.YELLOW_CONCRETE));
 
-    //Yellow
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.YELLOW_CONCRETE_STAIRS, Blocks.YELLOW_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.YELLOW_CONCRETE_SLAB, Blocks.YELLOW_CONCRETE, 2);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.YELLOW_CONCRETE_SLAB, Blocks.YELLOW_CONCRETE);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.YELLOW_CONCRETE_WALL, Blocks.YELLOW_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.YELLOW_CONCRETE_WALL, Blocks.YELLOW_CONCRETE);
-        concreteStairRecipe(exporter, ModBlocks.YELLOW_CONCRETE_STAIRS, Items.YELLOW_CONCRETE);
-        concreteFenceRecipe(exporter, ModBlocks.YELLOW_CONCRETE_FENCE, Items.YELLOW_CONCRETE);
-        concreteGateRecipe(exporter, ModBlocks.YELLOW_CONCRETE_GATE, Items.YELLOW_CONCRETE);
-        concreteButtonRecipe(exporter, ModBlocks.YELLOW_CONCRETE_BUTTON, Items.YELLOW_CONCRETE);
+                //Lime
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIME_CONCRETE_STAIRS, Blocks.LIME_CONCRETE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIME_CONCRETE_SLAB, Blocks.LIME_CONCRETE, 2);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIME_CONCRETE_SLAB, Ingredient.of(Blocks.LIME_CONCRETE));
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIME_CONCRETE_WALL, Ingredient.of(Blocks.LIME_CONCRETE));
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIME_CONCRETE_WALL, Blocks.LIME_CONCRETE);
+                stairBuilder(ModBlocks.LIME_CONCRETE_STAIRS, Ingredient.of(Items.LIME_CONCRETE));
+                fenceBuilder(ModBlocks.LIME_CONCRETE_FENCE, Ingredient.of(Items.LIME_CONCRETE));
+                fenceGateBuilder(ModBlocks.LIME_CONCRETE_GATE, Ingredient.of(Items.LIME_CONCRETE));
+                buttonBuilder(ModBlocks.LIME_CONCRETE_BUTTON, Ingredient.of(Items.LIME_CONCRETE));
 
-    //Lime
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIME_CONCRETE_STAIRS, Blocks.LIME_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIME_CONCRETE_SLAB, Blocks.LIME_CONCRETE, 2);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIME_CONCRETE_SLAB, Blocks.LIME_CONCRETE);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIME_CONCRETE_WALL, Blocks.LIME_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIME_CONCRETE_WALL, Blocks.LIME_CONCRETE);
-        concreteStairRecipe(exporter, ModBlocks.LIME_CONCRETE_STAIRS, Items.LIME_CONCRETE);
-        concreteFenceRecipe(exporter, ModBlocks.LIME_CONCRETE_FENCE, Items.LIME_CONCRETE);
-        concreteGateRecipe(exporter, ModBlocks.LIME_CONCRETE_GATE, Items.LIME_CONCRETE);
-        concreteButtonRecipe(exporter, ModBlocks.LIME_CONCRETE_BUTTON, Items.LIME_CONCRETE);
+                //Green
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GREEN_CONCRETE_STAIRS, Blocks.GREEN_CONCRETE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GREEN_CONCRETE_SLAB, Blocks.GREEN_CONCRETE, 2);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GREEN_CONCRETE_SLAB, Ingredient.of(Blocks.GREEN_CONCRETE));
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GREEN_CONCRETE_WALL, Ingredient.of(Blocks.GREEN_CONCRETE));
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GREEN_CONCRETE_WALL, Blocks.GREEN_CONCRETE);
+                stairBuilder(ModBlocks.GREEN_CONCRETE_STAIRS, Ingredient.of(Items.GREEN_CONCRETE));
+                fenceBuilder(ModBlocks.GREEN_CONCRETE_FENCE, Ingredient.of(Items.GREEN_CONCRETE));
+                fenceGateBuilder(ModBlocks.GREEN_CONCRETE_GATE, Ingredient.of(Items.GREEN_CONCRETE));
+                buttonBuilder(ModBlocks.GREEN_CONCRETE_BUTTON, Ingredient.of(Items.GREEN_CONCRETE));
 
-    //Green
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.GREEN_CONCRETE_STAIRS, Blocks.GREEN_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.GREEN_CONCRETE_SLAB, Blocks.GREEN_CONCRETE, 2);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.GREEN_CONCRETE_SLAB, Blocks.GREEN_CONCRETE);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.GREEN_CONCRETE_WALL, Blocks.GREEN_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.GREEN_CONCRETE_WALL, Blocks.GREEN_CONCRETE);
-        concreteStairRecipe(exporter, ModBlocks.GREEN_CONCRETE_STAIRS, Items.GREEN_CONCRETE);
-        concreteFenceRecipe(exporter, ModBlocks.GREEN_CONCRETE_FENCE, Items.GREEN_CONCRETE);
-        concreteGateRecipe(exporter, ModBlocks.GREEN_CONCRETE_GATE, Items.GREEN_CONCRETE);
-        concreteButtonRecipe(exporter, ModBlocks.GREEN_CONCRETE_BUTTON, Items.GREEN_CONCRETE);
+                //Cyan
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CYAN_CONCRETE_STAIRS, Blocks.CYAN_CONCRETE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CYAN_CONCRETE_SLAB, Blocks.CYAN_CONCRETE, 2);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CYAN_CONCRETE_SLAB, Ingredient.of(Blocks.CYAN_CONCRETE));
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CYAN_CONCRETE_WALL, Ingredient.of(Blocks.CYAN_CONCRETE));
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CYAN_CONCRETE_WALL, Blocks.CYAN_CONCRETE);
+                stairBuilder(ModBlocks.CYAN_CONCRETE_STAIRS, Ingredient.of(Items.CYAN_CONCRETE));
+                fenceBuilder(ModBlocks.CYAN_CONCRETE_FENCE, Ingredient.of(Items.CYAN_CONCRETE));
+                fenceGateBuilder(ModBlocks.CYAN_CONCRETE_GATE, Ingredient.of(Items.CYAN_CONCRETE));
+                buttonBuilder(ModBlocks.CYAN_CONCRETE_BUTTON, Ingredient.of(Items.CYAN_CONCRETE));
 
-    //Cyan
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CYAN_CONCRETE_STAIRS, Blocks.CYAN_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CYAN_CONCRETE_SLAB, Blocks.CYAN_CONCRETE, 2);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CYAN_CONCRETE_SLAB, Blocks.CYAN_CONCRETE);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CYAN_CONCRETE_WALL, Blocks.CYAN_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CYAN_CONCRETE_WALL, Blocks.CYAN_CONCRETE);
-        concreteStairRecipe(exporter, ModBlocks.CYAN_CONCRETE_STAIRS, Items.CYAN_CONCRETE);
-        concreteFenceRecipe(exporter, ModBlocks.CYAN_CONCRETE_FENCE, Items.CYAN_CONCRETE);
-        concreteGateRecipe(exporter, ModBlocks.CYAN_CONCRETE_GATE, Items.CYAN_CONCRETE);
-        concreteButtonRecipe(exporter, ModBlocks.CYAN_CONCRETE_BUTTON, Items.CYAN_CONCRETE);
+                //Light Blue
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_BLUE_CONCRETE_STAIRS, Blocks.LIGHT_BLUE_CONCRETE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_BLUE_CONCRETE_SLAB, Blocks.LIGHT_BLUE_CONCRETE, 2);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_BLUE_CONCRETE_SLAB, Ingredient.of(Blocks.LIGHT_BLUE_CONCRETE));
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_BLUE_CONCRETE_WALL, Ingredient.of(Blocks.LIGHT_BLUE_CONCRETE));
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_BLUE_CONCRETE_WALL, Blocks.LIGHT_BLUE_CONCRETE);
+                stairBuilder(ModBlocks.LIGHT_BLUE_CONCRETE_STAIRS, Ingredient.of(Items.LIGHT_BLUE_CONCRETE));
+                fenceBuilder(ModBlocks.LIGHT_BLUE_CONCRETE_FENCE, Ingredient.of(Items.LIGHT_BLUE_CONCRETE));
+                fenceGateBuilder(ModBlocks.LIGHT_BLUE_CONCRETE_GATE, Ingredient.of(Items.LIGHT_BLUE_CONCRETE));
+                buttonBuilder(ModBlocks.LIGHT_BLUE_CONCRETE_BUTTON, Ingredient.of(Items.LIGHT_BLUE_CONCRETE));
 
-    //Light Blue
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_BLUE_CONCRETE_STAIRS, Blocks.LIGHT_BLUE_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_BLUE_CONCRETE_SLAB, Blocks.LIGHT_BLUE_CONCRETE, 2);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_BLUE_CONCRETE_SLAB, Blocks.LIGHT_BLUE_CONCRETE);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_BLUE_CONCRETE_WALL, Blocks.LIGHT_BLUE_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LIGHT_BLUE_CONCRETE_WALL, Blocks.LIGHT_BLUE_CONCRETE);
-        concreteStairRecipe(exporter, ModBlocks.LIGHT_BLUE_CONCRETE_STAIRS, Items.LIGHT_BLUE_CONCRETE);
-        concreteFenceRecipe(exporter, ModBlocks.LIGHT_BLUE_CONCRETE_FENCE, Items.LIGHT_BLUE_CONCRETE);
-        concreteGateRecipe(exporter, ModBlocks.LIGHT_BLUE_CONCRETE_GATE, Items.LIGHT_BLUE_CONCRETE);
-        concreteButtonRecipe(exporter, ModBlocks.LIGHT_BLUE_CONCRETE_BUTTON, Items.LIGHT_BLUE_CONCRETE);
+                //Blue
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_CONCRETE_STAIRS, Blocks.BLUE_CONCRETE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_CONCRETE_SLAB, Blocks.BLUE_CONCRETE, 2);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_CONCRETE_SLAB, Ingredient.of(Blocks.BLUE_CONCRETE));
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_CONCRETE_WALL, Ingredient.of(Blocks.BLUE_CONCRETE));
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_CONCRETE_WALL, Blocks.BLUE_CONCRETE);
+                stairBuilder(ModBlocks.BLUE_CONCRETE_STAIRS, Ingredient.of(Items.BLUE_CONCRETE));
+                fenceBuilder(ModBlocks.BLUE_CONCRETE_FENCE, Ingredient.of(Items.BLUE_CONCRETE));
+                fenceGateBuilder(ModBlocks.BLUE_CONCRETE_GATE, Ingredient.of(Items.BLUE_CONCRETE));
+                buttonBuilder(ModBlocks.BLUE_CONCRETE_BUTTON, Ingredient.of(Items.BLUE_CONCRETE));
 
-    //Blue
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_CONCRETE_STAIRS, Blocks.BLUE_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_CONCRETE_SLAB, Blocks.BLUE_CONCRETE, 2);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_CONCRETE_SLAB, Blocks.BLUE_CONCRETE);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_CONCRETE_WALL, Blocks.BLUE_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_CONCRETE_WALL, Blocks.BLUE_CONCRETE);
-        concreteStairRecipe(exporter, ModBlocks.BLUE_CONCRETE_STAIRS, Items.BLUE_CONCRETE);
-        concreteFenceRecipe(exporter, ModBlocks.BLUE_CONCRETE_FENCE, Items.BLUE_CONCRETE);
-        concreteGateRecipe(exporter, ModBlocks.BLUE_CONCRETE_GATE, Items.BLUE_CONCRETE);
-        concreteButtonRecipe(exporter, ModBlocks.BLUE_CONCRETE_BUTTON, Items.BLUE_CONCRETE);
+                //Purple
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PURPLE_CONCRETE_STAIRS, Blocks.PURPLE_CONCRETE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PURPLE_CONCRETE_SLAB, Blocks.PURPLE_CONCRETE, 2);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PURPLE_CONCRETE_SLAB, Ingredient.of(Blocks.PURPLE_CONCRETE));
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PURPLE_CONCRETE_WALL, Ingredient.of(Blocks.PURPLE_CONCRETE));
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PURPLE_CONCRETE_WALL, Blocks.PURPLE_CONCRETE);
+                stairBuilder(ModBlocks.PURPLE_CONCRETE_STAIRS, Ingredient.of(Items.PURPLE_CONCRETE));
+                fenceBuilder(ModBlocks.PURPLE_CONCRETE_FENCE, Ingredient.of(Items.PURPLE_CONCRETE));
+                fenceGateBuilder(ModBlocks.PURPLE_CONCRETE_GATE, Ingredient.of(Items.PURPLE_CONCRETE));
+                buttonBuilder(ModBlocks.PURPLE_CONCRETE_BUTTON, Ingredient.of(Items.PURPLE_CONCRETE));
 
-    //Purple
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PURPLE_CONCRETE_STAIRS, Blocks.PURPLE_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PURPLE_CONCRETE_SLAB, Blocks.PURPLE_CONCRETE, 2);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PURPLE_CONCRETE_SLAB, Blocks.PURPLE_CONCRETE);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PURPLE_CONCRETE_WALL, Blocks.PURPLE_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PURPLE_CONCRETE_WALL, Blocks.PURPLE_CONCRETE);
-        concreteStairRecipe(exporter, ModBlocks.PURPLE_CONCRETE_STAIRS, Items.PURPLE_CONCRETE);
-        concreteFenceRecipe(exporter, ModBlocks.PURPLE_CONCRETE_FENCE, Items.PURPLE_CONCRETE);
-        concreteGateRecipe(exporter, ModBlocks.PURPLE_CONCRETE_GATE, Items.PURPLE_CONCRETE);
-        concreteButtonRecipe(exporter, ModBlocks.PURPLE_CONCRETE_BUTTON, Items.PURPLE_CONCRETE);
+                //Magenta
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MAGENTA_CONCRETE_STAIRS, Blocks.MAGENTA_CONCRETE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MAGENTA_CONCRETE_SLAB, Blocks.MAGENTA_CONCRETE, 2);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MAGENTA_CONCRETE_SLAB, Ingredient.of(Blocks.MAGENTA_CONCRETE));
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MAGENTA_CONCRETE_WALL, Ingredient.of(Blocks.MAGENTA_CONCRETE));
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MAGENTA_CONCRETE_WALL, Blocks.MAGENTA_CONCRETE);
+                stairBuilder(ModBlocks.MAGENTA_CONCRETE_STAIRS, Ingredient.of(Items.MAGENTA_CONCRETE));
+                fenceBuilder(ModBlocks.MAGENTA_CONCRETE_FENCE, Ingredient.of(Items.MAGENTA_CONCRETE));
+                fenceGateBuilder(ModBlocks.MAGENTA_CONCRETE_GATE, Ingredient.of(Items.MAGENTA_CONCRETE));
+                buttonBuilder(ModBlocks.MAGENTA_CONCRETE_BUTTON, Ingredient.of(Items.MAGENTA_CONCRETE));
 
-    //Magenta
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MAGENTA_CONCRETE_STAIRS, Blocks.MAGENTA_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MAGENTA_CONCRETE_SLAB, Blocks.MAGENTA_CONCRETE, 2);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MAGENTA_CONCRETE_SLAB, Blocks.MAGENTA_CONCRETE);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MAGENTA_CONCRETE_WALL, Blocks.MAGENTA_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MAGENTA_CONCRETE_WALL, Blocks.MAGENTA_CONCRETE);
-        concreteStairRecipe(exporter, ModBlocks.MAGENTA_CONCRETE_STAIRS, Items.MAGENTA_CONCRETE);
-        concreteFenceRecipe(exporter, ModBlocks.MAGENTA_CONCRETE_FENCE, Items.MAGENTA_CONCRETE);
-        concreteGateRecipe(exporter, ModBlocks.MAGENTA_CONCRETE_GATE, Items.MAGENTA_CONCRETE);
-        concreteButtonRecipe(exporter, ModBlocks.MAGENTA_CONCRETE_BUTTON, Items.MAGENTA_CONCRETE);
-
-    //Pink
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PINK_CONCRETE_STAIRS, Blocks.PINK_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PINK_CONCRETE_SLAB, Blocks.PINK_CONCRETE, 2);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PINK_CONCRETE_SLAB, Blocks.PINK_CONCRETE);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PINK_CONCRETE_WALL, Blocks.PINK_CONCRETE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PINK_CONCRETE_WALL, Blocks.PINK_CONCRETE);
-        concreteStairRecipe(exporter, ModBlocks.PINK_CONCRETE_STAIRS, Items.PINK_CONCRETE);
-        concreteFenceRecipe(exporter, ModBlocks.PINK_CONCRETE_FENCE, Items.PINK_CONCRETE);
-        concreteGateRecipe(exporter, ModBlocks.PINK_CONCRETE_GATE, Items.PINK_CONCRETE);
-        concreteButtonRecipe(exporter, ModBlocks.PINK_CONCRETE_BUTTON, Items.PINK_CONCRETE);
-
+                //Pink
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PINK_CONCRETE_STAIRS, Blocks.PINK_CONCRETE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PINK_CONCRETE_SLAB, Blocks.PINK_CONCRETE, 2);
+                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PINK_CONCRETE_SLAB, Ingredient.of(Blocks.PINK_CONCRETE));
+                wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PINK_CONCRETE_WALL, Ingredient.of(Blocks.PINK_CONCRETE));
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PINK_CONCRETE_WALL, Blocks.PINK_CONCRETE);
+                stairBuilder(ModBlocks.PINK_CONCRETE_STAIRS, Ingredient.of(Blocks.PINK_CONCRETE));
+                fenceBuilder(ModBlocks.PINK_CONCRETE_FENCE, Ingredient.of(Blocks.PINK_CONCRETE));
+                fenceGateBuilder(ModBlocks.PINK_CONCRETE_GATE, Ingredient.of(Blocks.PINK_CONCRETE));
+                buttonBuilder(ModBlocks.PINK_CONCRETE_BUTTON, Ingredient.of(Blocks.PINK_CONCRETE));
+            }
+        };
     }
-
-
-//Function to create stair recipes for concrete. Makes the recipe builder code less complex.
-    public static void concreteStairRecipe (RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
-        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output, 4)
-                .pattern("C  ")
-                .pattern("CC ")
-                .pattern("CCC")
-                .input('C', Ingredient.ofItems(input))
-                .criterion(hasItem(input), conditionsFromItem(input))
-                .offerTo(exporter);
-    }
-
-
-//Function to create fence recipes for concrete. Makes the recipe builder code less complex.
-    public static void concreteFenceRecipe (RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
-        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output, 3)
-                .pattern("CIC")
-                .pattern("CIC")
-                .pattern("   ")
-                .input('C', Ingredient.ofItems(input))
-                .input('I', Ingredient.ofItems(Items.IRON_BARS))
-                .criterion(hasItem(input), conditionsFromItem(input))
-                .criterion(hasItem(Items.IRON_BARS), conditionsFromItem(Items.IRON_BARS))
-                .offerTo(exporter);
-    }
-
-
-//Function to create fence gate recipes for concrete. Makes the recipe builder code less complex.
-    public static void concreteGateRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
-        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output, 1)
-                .pattern("ICI")
-                .pattern("ICI")
-                .pattern("   ")
-                .input('C', Ingredient.ofItems(input))
-                .input('I', Ingredient.ofItems(Items.IRON_BARS))
-                .criterion(hasItem(input), conditionsFromItem(input))
-                .criterion(hasItem(Items.IRON_BARS), conditionsFromItem(Items.IRON_BARS))
-                .offerTo(exporter);
-    }
-
-
-//Function to create button recipes for concrete. Makes the recipe builder code less complex.
-    public static void concreteButtonRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input) {
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.REDSTONE, output, 1)
-                .input(input)
-                .group("concrete_buttons")
-                .criterion(hasItem(input), conditionsFromItem(input))
-                .offerTo(exporter);
+    @Override
+    public String getName() {
+        return "";
     }
 }
