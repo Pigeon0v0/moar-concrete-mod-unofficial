@@ -32,7 +32,7 @@ The new Moar Concrete blocks are available in the crafting table and stonecutter
 
 ---
 
-**v1.7.0** supports Minecraft 26.1.2.
+**v1.7.0** supports Minecraft 26.1.2 and adds localization for Chinese (Simplified).
 
 </details>
 
